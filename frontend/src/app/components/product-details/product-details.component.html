@@ -1,0 +1,73 @@
+<section class="py-5">
+  <div class="container">
+    <div class="row gx-5">
+      <aside class="col-lg-6">
+        <div class="border rounded-4 mb-3 d-flex justify-content-center">
+          <a
+            data-fslightbox="mygalley"
+            class="rounded-4"
+            target="_blank"
+            data-type="image"
+          >
+            <img
+              style="max-width: 100%; max-height: 100vh; margin: auto"
+              class="rounded-4 fit"
+              src="{{ product?.image?.[0] }}"
+            />
+            
+          </a>
+        </div>
+        <div class="d-flex justify-content-center mb-3">
+          <a
+            data-fslightbox="mygalley"
+            class="border mx-1 rounded-2"
+            target="_blank"
+            data-type="image"
+            class="item-thumb"
+            *ngFor="let image of product?.image"
+          >
+            <img width="60" height="60" class="rounded-2" src="{{ image }}" />
+          </a>
+        </div>
+      </aside>
+      <main class="col-lg-6">
+        <div class="ps-lg-3">
+          <h3 class="title text-dark">
+            {{ product?.name }}
+          </h3>
+          <h4 class="title text-dark">
+            {{ product?.shortDescription }}
+          </h4>
+          <div class="d-flex flex-row my-3">
+            <div class="text-warning mb-1 me-2">
+              <span class="ms-1"> {{ product?.rating?.avg }} AVG </span>
+            </div>
+            <span class="text-success ms-2" *ngIf="product?.inStock"
+              >In stock</span
+            >
+            <span class="text-danger ms-2" *ngIf="!product?.inStock"
+              >Not In stock</span
+            >
+          </div>
+
+          <div class="mb-3">
+            <span class="h5">{{ product?.price?.reseller }}</span>
+            <span class="text-muted">/per unit</span>
+          </div>
+
+          <p>
+            {{ product?.longDescription }}
+          </p>
+
+          <hr />
+          <a  class="btn btn-primary shadow-0" *ngIf="product?.inStock">
+            <i class="me-1 fa fa-shopping-basket"></i> Add to cart
+          </a>
+          <a  class="btn btn-danger shadow-0" *ngIf="!product?.inStock">
+            <i class="me-1 fa fa-shopping-basket"></i> Not Available
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>

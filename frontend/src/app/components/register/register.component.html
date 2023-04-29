@@ -1,0 +1,73 @@
+<div class="container mb-5">
+  <div class="card mx-auto mt-5 pb-3 shadow rounded" style="width: 25rem">
+    <div class="card-body">
+      <h4 class="card-title">Register</h4>
+      <form
+        class="needs-validation"
+        autocomplete="off"
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="userName">Name: </label>
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="form.name"
+            class="form-control"
+            placeholder="Ganguly Tech"
+            required
+            #name="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && name.errors }"
+          />
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="userEmail">Email: </label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            [(ngModel)]="form.email"
+            placeholder="abc@abc.com"
+            #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+            required
+          />
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="userPassword">Password: </label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="******"
+            name="password"
+            aria-describedby="passwordHelp"
+            required
+            [(ngModel)]="form.password"
+            #password="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+          />
+        </div>
+        <br>
+        <button
+          type="submit"
+          class="btn btn-warning w-100 shadow btn-sm rounded"
+        >
+          Register
+        </button>
+      </form>
+
+      <hr class="hr-text" data-content="OR" />
+
+      <p class="text-center">
+        Already have an account?
+        <a routerLink="/login">Sign in <i class="fas fa-caret-right"></i></a>
+      </p>
+    </div>
+  </div>
+</div>
